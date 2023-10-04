@@ -53,6 +53,16 @@ app.post("/", function(req,res){
     res.redirect("/");
 })
 
+// for deleting post 
+app.post("/delete", function(req,res){
+    const checked= req.body.itemChecked
+     Item.findByIdAndRemove(checked)
+     .then(result => (
+        console.log("Item deleted")
+    ))
+    .catch((err)=> console.log(err))
+    res.redirect("/")
+})
 
     
 // listenig at Port 
